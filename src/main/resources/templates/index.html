@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+        <title>Pokemon</title>
+    </head>
+
+    <body>
+        <div class="md-5">
+            <nav class="navbar navbar-dark bg-dark">
+                <span class="navbar-text">ポケモン一覧</span>
+            </nav>
+        </div>
+        <div class="mx-5">
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+            <div class="col">
+            <table border="1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ポケモン</th>
+                        <th>タイプ</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pokemon : ${pokemons}" th:object="${pokemon}">
+                        <td th:text="*{id}"></td>
+                        <td th:text="*{name}"></td>
+                        <td th:text="*{type.name}"></td>
+                        <td>
+                            <a th:href="@{/update/{id}(id=*{id})}">
+                                <button class="btn btn-primary">edit</button>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a th:href="@{/delete/{id}(id=*{id})}" >
+                                <button class="btn btn-danger">delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <a th:href="@{/create}">
+            ポケモンを創造する
+        </a> 
+    </body>
+</html>

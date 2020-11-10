@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+    </head>  
+    <body>
+        <form th:action="@{/process}" th:object="${pokemon}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <label for="name">名前</label>
+            <input type="text" th:field="*{name}">
+
+            <label for="type">タイプ</label>
+            <select th:field="*{type}">
+                <th:block th:each="type : ${@typeRepository.findAll()}">
+                    <option th:value="${type.id}" th:text="${type.name}"></option>
+                </th:block>
+            </select>
+        
+            <button>
+                <span class="text">保存</span>
+            </button>
+        </form>
+    </body>
+</html>
