@@ -25,18 +25,18 @@ public class PokeController {
         return "index";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/new")
     public String createPokemon(@ModelAttribute Pokemon pokemon) {
         return "form";
     }
 
-    @PostMapping("/process")
+    @PostMapping("/update")
     public String process(@Validated @ModelAttribute Pokemon pokemon, BindingResult result) {
         repository.save(pokemon);
         return "redirect:/";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/edit/{id}")
     public String updatePokemon(@PathVariable Long id, Model model) {
         model.addAttribute("pokemon", repository.findById(id));
         return "form";

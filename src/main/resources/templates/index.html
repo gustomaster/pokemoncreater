@@ -33,7 +33,7 @@
                         <td th:text="*{name}"></td>
                         <td th:text="*{type.name}"></td>
                         <td>
-                            <a th:href="@{/update/{id}(id=*{id})}">
+                            <a th:href="@{/edit/{id}(id=*{id})}">
                                 <button class="btn btn-primary">edit</button>
                             </a>
                         </td>
@@ -48,7 +48,7 @@
             </table>
         </div>
         <br />
-        <a th:href="@{/create}">
+        <a th:href="@{/new}">
             ポケモンを創造する
         </a> 
     </body>
