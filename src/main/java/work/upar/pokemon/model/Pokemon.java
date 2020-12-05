@@ -19,6 +19,13 @@ public class Pokemon {
 
     private String name;
 
+    private int h;
+    private int a;
+    private int b;
+    private int c;
+    private int d;
+    private int s;
+    
     @ManyToOne
     private Type type;
 

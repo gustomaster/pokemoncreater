@@ -23,6 +23,12 @@
                         <th>#</th>
                         <th>ポケモン</th>
                         <th>タイプ</th>
+                        <th>HP</th>
+                        <th>攻撃</th>
+                        <th>防御</th>
+                        <th>特攻</th>
+                        <th>特防</th>
+                        <th>素早さ</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -32,6 +38,12 @@
                         <td th:text="*{id}"></td>
                         <td th:text="*{name}"></td>
                         <td th:text="*{type.name}"></td>
+                        <td th:text="*{h}"></td>
+                        <td th:text="*{a}"></td>
+                        <td th:text="*{b}"></td>
+                        <td th:text="*{c}"></td>
+                        <td th:text="*{d}"></td>
+                        <td th:text="*{s}"></td>
                         <td>
                             <a th:href="@{/edit/{id}(id=*{id})}">
                                 <button class="btn btn-primary">edit</button>
