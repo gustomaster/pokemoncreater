@@ -9,9 +9,50 @@
     <body>
         <div class="md-5">
             <nav class="navbar navbar-dark bg-dark">
-                <span class="navbar-text">ポケモン一覧</span>
+                <span class="navbar-text">ポケモン検索</span>
             </nav>
         </div>
+        <br />
+        <form th:action="@{/search}" th:object="${pokemon}" method="get">
+            <input type="hidden" th:field="*{id}">
+
+            <label for="name">名前</label>
+            <input type="text" th:field="*{name}">
+
+            <label for="type">タイプ</label>
+            <select th:field="*{type}">
+                <th:block th:each="type : ${@typeRepository.findAll()}">
+                    <option th:value="${type.id}" th:text="${type.name}"></option>
+                </th:block>
+            </select>
+            
+            <br />
+            
+            <!-- <label for="name">HP</label>
+            <input type="number" th:field="*{H}">
+
+            <label for="name">攻撃</label>
+            <input type="number" th:field="*{A}">
+            
+            <label for="name">防御</label>
+            <input type="number" th:field="*{B}">
+            
+            <label for="name">特攻</label>
+            <input type="number" th:field="*{C}">
+            
+            <label for="name">特防</label>
+            <input type="number" th:field="*{D}">
+
+            <label for="name">素早さ</label>
+            <input type="number" th:field="*{S}"> -->
+
+            <br />
+
+            <button>
+                <span class="text">保存</span>
+            </button>
+        </form>
+        <br />
         <br />
         <div class="mx-5">
             <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -30,8 +71,6 @@
                         <th>特攻</th>
                         <th>特防</th>
                         <th>素早さ</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,28 +84,13 @@
                         <td th:text="*{c}"></td>
                         <td th:text="*{d}"></td>
                         <td th:text="*{s}"></td>
-                        <td>
-                            <a th:href="@{/edit/{id}(id=*{id})}">
-                                <button class="btn btn-primary">edit</button>
-                            </a>
-                        </td>
-
-                        <td>
-                            <a th:href="@{/delete/{id}(id=*{id})}" >
-                                <button class="btn btn-danger">delete</button>
-                            </a>
-                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <br />
-        <a th:href="@{/new}">
-            ポケモンを創造する
-        </a> 
-        <br />
-        <a th:href="@{/search}">
-            ポケモンを検索する
+        <a href="/">
+            TOPへ戻る
         </a> 
     </body>
 </html>

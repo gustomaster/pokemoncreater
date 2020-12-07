@@ -1,5 +1,8 @@
 package work.upar.pokemon.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,9 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import lombok.RequiredArgsConstructor;
 import work.upar.pokemon.model.Pokemon;
 import work.upar.pokemon.repository.PokeRepository;
+import work.upar.pokemon.service.PokeService;
 
 @RequiredArgsConstructor
 @Controller
@@ -46,6 +52,16 @@ public class PokeController {
     public String deletePokemon(@PathVariable Long id) {
         repository.deleteById(id);
         return "redirect:/";
+    }
+
+    @Autowired
+    PokeService pokeService;
+
+    @GetMapping("/search")
+    String search(Model model) {
+        List<Pokemon> pokemons = pokeService.findAll();
+        model.addAttribute("pokemons", pokemons);
+        return "search";
     }
     
 }
