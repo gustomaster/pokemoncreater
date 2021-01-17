@@ -57,7 +57,7 @@ public class PokeController {
     @Autowired
     PokeService pokeService;
 
-    @GetMapping("/search")
+    @RequestMapping("/search")
     String search(Model model) {
         List<Pokemon> pokemons = pokeService.findAll();
         model.addAttribute("pokemons", pokemons);

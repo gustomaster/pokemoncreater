@@ -14,42 +14,38 @@
         </div>
         <br />
         <form th:action="@{/search}" th:object="${pokemon}" method="get">
-            <input type="hidden" th:field="*{id}">
+            <!-- <input type="hidden" th:field="*{id}"> -->
 
             <label for="name">名前</label>
-            <input type="text" th:field="*{name}">
+            <input type="text">
+
 
             <label for="type">タイプ</label>
-            <select th:field="*{type}">
-                <th:block th:each="type : ${@typeRepository.findAll()}">
-                    <option th:value="${type.id}" th:text="${type.name}"></option>
-                </th:block>
+            <select>
+                <option value="">ほのお</option>
             </select>
-            
+            <!-- <select th:field="*{type}"> -->
+                <!-- <th:block th:each="type : ${@typeRepository.findAll()}">
+                    <option th:value="${type.id}" th:text="${type.name}"></option>
+                </th:block> 
+            </select>-->
+
+            <label for="type">種族値</label>
+            <select>
+                <option value="">HP</option>
+                <option value="">攻撃</option>
+            </select>
+        が
+        <input type="number">
+<!-- UP or Down -->
+            <select>
+                <option value="">以上</option>
+                <option value="">以下</option>
+                
+            </select>
             <br />
-            
-            <!-- <label for="name">HP</label>
-            <input type="number" th:field="*{H}">
-
-            <label for="name">攻撃</label>
-            <input type="number" th:field="*{A}">
-            
-            <label for="name">防御</label>
-            <input type="number" th:field="*{B}">
-            
-            <label for="name">特攻</label>
-            <input type="number" th:field="*{C}">
-            
-            <label for="name">特防</label>
-            <input type="number" th:field="*{D}">
-
-            <label for="name">素早さ</label>
-            <input type="number" th:field="*{S}"> -->
-
-            <br />
-
             <button>
-                <span class="text">保存</span>
+                <span class="text">検索</span>
             </button>
         </form>
         <br />
