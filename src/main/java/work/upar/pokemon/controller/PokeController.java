@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
-import work.upar.pokemon.model.Pokemon;
+import work.upar.pokemon.entity.Pokemon;
 import work.upar.pokemon.repository.PokeRepository;
 
 @RequiredArgsConstructor

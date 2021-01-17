@@ -1,4 +1,4 @@
-package work.upar.pokemon.model;
+package work.upar.pokemon.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
