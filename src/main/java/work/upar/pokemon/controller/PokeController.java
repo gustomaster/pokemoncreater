@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import lombok.RequiredArgsConstructor;
 import work.upar.pokemon.model.Pokemon;
 import work.upar.pokemon.repository.PokeRepository;
