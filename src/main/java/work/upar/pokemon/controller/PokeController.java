@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.RequiredArgsConstructor;
-import work.upar.pokemon.model.Pokemon;
+import work.upar.pokemon.entity.Pokemon;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.service.PokeService;
 

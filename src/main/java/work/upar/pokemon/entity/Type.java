@@ -1,10 +1,12 @@
-package work.upar.pokemon.model;
+package work.upar.pokemon.entity;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,21 +14,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Pokemon {
+public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private int h;
-    private int a;
-    private int b;
-    private int c;
-    private int d;
-    private int s;
-    
-    @ManyToOne
-    private Type type;
-
+    @OneToMany(mappedBy = "type")
+    private List<Pokemon> pokemons;
 }
