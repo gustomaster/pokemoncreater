@@ -22,13 +22,9 @@
 
             <label for="type">タイプ</label>
             <select>
-                <option value="">ほのお</option>
+                <option th:each="pokemon :${pokemons}" th:text="${pokemon.type.name}"></option>
             </select>
-            <!-- <select th:field="*{type}"> -->
-                <!-- <th:block th:each="type : ${@typeRepository.findAll()}">
-                    <option th:value="${type.id}" th:text="${type.name}"></option>
-                </th:block> 
-            </select>-->
+
 
             <label for="type">種族値</label>
             <select>
