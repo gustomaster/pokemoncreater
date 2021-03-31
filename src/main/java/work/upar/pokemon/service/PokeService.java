@@ -17,4 +17,9 @@ public class PokeService {
         return pokeRepository.findAll();
     }
 
+    public String search() {
+        pokeRepository.findById();
+        return search;
+    }
+
 }

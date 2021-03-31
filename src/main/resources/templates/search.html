@@ -14,22 +14,19 @@
         </div>
         <br />
         <form th:action="@{/search}" th:object="${pokemon}" method="get">
-            <!-- <input type="hidden" th:field="*{id}"> -->
 
             <label for="name">名前</label>
             <input type="text">
 
-
             <label for="type">タイプ</label>
-            <select>
-                // 項目の先頭を空欄にするための空オプション
+            <select name="type">
                 <option value=""></option>
                 <option th:each="type :${@typeRepository.findAll()}" th:value="${type.id}" th:text="${type.name}"></option>
             </select>
             <br />
 
-            <label for="type">種族値</label>
-            <select>
+            <label for="baseStatus">種族値</label>
+            <select name="baseStatus">
                 <option value="h">HP</option>
                 <option value="a">攻撃</option>
                 <option value="b">防御</option>
@@ -43,12 +40,9 @@
             <select>
                 <option value="">以上</option>
                 <option value="">以下</option>
-                
             </select>
             <br />
-            <button>
-                <span class="text">検索</span>
-            </button>
+            <input type="submit" text="検索するよ">
         </form>
         <br />
         <br />
