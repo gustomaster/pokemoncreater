@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import work.upar.pokemon.entity.Pokemon;
 
 public interface PokeRepository extends JpaRepository<Pokemon, Long> {
-  @Query("select pk from Pokemon pk where type_id = :typeId")
+  String searchsql = "select pk from Pokemon pk where type_id = :typeId";
+  @Query(searchsql)
   List<Pokemon> getPokemon(Long typeId);
 }
