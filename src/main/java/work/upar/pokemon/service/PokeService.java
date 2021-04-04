@@ -27,10 +27,9 @@ public class PokeService {
         return pokeRepository.findAll();
     }
 
-    public Optional<Pokemon> search(Long typeId) {
-        Optional<Pokemon> Pokemontype = pokeRepository.findById(typeId);
-
-        return Pokemontype;
+    public List<Pokemon> search(Long typeId) {
+        List<Pokemon> searchPokemon = pokeRepository.getPokemon(typeId);
+        return searchPokemon;
     }
 
 }

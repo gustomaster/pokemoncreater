@@ -63,8 +63,8 @@ public class PokeController {
 
     @PostMapping("/search")
     String search2(@RequestParam Type type, Model model) {
-        //Optional<Pokemon> pokemons = pokeService.search(type.getId());
-        //model.addAttribute("pokemons", pokemons);
+        List<Pokemon> pokemons = pokeService.search(type.getId());
+        model.addAttribute("pokemons", pokemons);
         return "search";
     }
     
