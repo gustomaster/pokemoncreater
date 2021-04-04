@@ -13,7 +13,7 @@
             </nav>
         </div>
         <br />
-        <form th:action="@{/search}" th:object="${pokemon}" method="get">
+        <form th:action="@{/search}" th:object="${pokemon}" method="post">
 
             <label for="name">名前</label>
             <input type="text">

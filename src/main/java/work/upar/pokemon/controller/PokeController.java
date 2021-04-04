@@ -7,14 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.RequiredArgsConstructor;
 import work.upar.pokemon.entity.Pokemon;
+import work.upar.pokemon.entity.Type;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.service.PokeService;
 
@@ -56,10 +53,17 @@ public class PokeController {
     @Autowired
     PokeService pokeService;
 
-    @RequestMapping("/search")
+    @GetMapping("/search")
     String search(Model model) {
         List<Pokemon> pokemons = pokeService.findAll();
         model.addAttribute("pokemons", pokemons);
+        return "search";
+    }
+
+    @PostMapping("/search")
+    String search2(@RequestParam Type type, Model model) {
+        //List<Pokemon> pokemons = pokeService.search(type.getId());
+        //model.addAttribute("pokemons", pokemons);
         return "search";
     }
     
