@@ -17,7 +17,8 @@ import work.upar.pokemon.repository.TypeRepository;
 public class PokeService {
 
     @Autowired
-    private PokeRepository pokeRepository;
+    @NonNull
+    private final PokeRepository pokeRepository;
 
     @NonNull
     private final TypeRepository typeRepository;
@@ -26,10 +27,10 @@ public class PokeService {
         return pokeRepository.findAll();
     }
 
-    public Optional<Type> search(Long typeId) {
-        Optional<Type> retype = typeRepository.findById(typeId);
+    public Optional<Pokemon> search(Long typeId) {
+        Optional<Pokemon> Pokemontype = pokeRepository.findById(typeId);
 
-        return retype;
+        return Pokemontype;
     }
 
 }

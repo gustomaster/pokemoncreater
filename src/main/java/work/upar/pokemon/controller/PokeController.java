@@ -1,6 +1,7 @@
 package work.upar.pokemon.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,7 +63,7 @@ public class PokeController {
 
     @PostMapping("/search")
     String search2(@RequestParam Type type, Model model) {
-        //List<Pokemon> pokemons = pokeService.search(type.getId());
+        //Optional<Pokemon> pokemons = pokeService.search(type.getId());
         //model.addAttribute("pokemons", pokemons);
         return "search";
     }
