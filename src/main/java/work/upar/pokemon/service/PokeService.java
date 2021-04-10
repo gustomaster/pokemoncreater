@@ -29,6 +29,7 @@ public class PokeService {
     }
 
     public List<Pokemon> search(SearchForm form) {
+        String name = form.getName();
         Long type = form.getType();
         String bs = form.getBaseStatus();
         Long bsv = form.getBaseStatusValue();
