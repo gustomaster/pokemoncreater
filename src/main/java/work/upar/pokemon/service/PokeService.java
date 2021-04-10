@@ -9,6 +9,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import work.upar.pokemon.entity.Pokemon;
 import work.upar.pokemon.entity.Type;
+import work.upar.pokemon.form.SearchForm;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.repository.TypeRepository;
 
@@ -27,8 +28,12 @@ public class PokeService {
         return pokeRepository.findAll();
     }
 
-    public List<Pokemon> search(Long typeId) {
-        List<Pokemon> searchPokemon = pokeRepository.getPokemon(typeId);
+    public List<Pokemon> search(SearchForm form) {
+        Long type = form.getType();
+        String bs = form.getBaseStatus();
+        Long bsv = form.getBaseStatusValue();
+        Long bsj = form.getBaseStatusJudge();
+        List<Pokemon> searchPokemon = pokeRepository.getPokemon(type);
         return searchPokemon;
     }
 
