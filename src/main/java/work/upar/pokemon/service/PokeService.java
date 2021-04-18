@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import work.upar.pokemon.entity.Pokemon;
-import work.upar.pokemon.entity.Type;
+import work.upar.pokemon.service.PokeSpecifications;
 import work.upar.pokemon.form.SearchForm;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.repository.TypeRepository;
@@ -20,6 +22,10 @@ public class PokeService {
     @Autowired
     @NonNull
     private final PokeRepository pokeRepository;
+
+    @Autowired
+    @NonNull
+    private final PokeSpecifications pokeSpecifications;
 
     @NonNull
     private final TypeRepository typeRepository;
@@ -34,8 +40,11 @@ public class PokeService {
         String bs = form.getBaseStatus();
         Long bsv = form.getBaseStatusValue();
         Long bsj = form.getBaseStatusJudge();
-        List<Pokemon> searchPokemon = pokeRepository.getPokemon(type);
-        return searchPokemon;
+        return pokeRepository.findAll(Specification
+            .where(pokeSpecifications.nameContains(name))
+            .and(pokeSpecifications.baseStatusContains(bs,bsv,bsj))
+            //.and(pokeSpecifications.typeContains(type))
+        );
     }
 
 }
