@@ -1,14 +1,12 @@
 package work.upar.pokemon.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import work.upar.pokemon.entity.Pokemon;
 import work.upar.pokemon.service.PokeSpecifications;
 import work.upar.pokemon.form.SearchForm;
@@ -43,7 +41,7 @@ public class PokeService {
         return pokeRepository.findAll(Specification
             .where(pokeSpecifications.nameContains(name))
             .and(pokeSpecifications.baseStatusContains(bs,bsv,bsj))
-            //.and(pokeSpecifications.typeContains(type))
+            .and(pokeSpecifications.typeContains(type))
         );
     }
 

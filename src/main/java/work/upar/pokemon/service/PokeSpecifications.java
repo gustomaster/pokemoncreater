@@ -1,10 +1,7 @@
 package work.upar.pokemon.service;
 
 import java.util.Objects;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
@@ -38,7 +35,7 @@ public class PokeSpecifications {
       @Override
       public Predicate toPredicate(Root<Pokemon> root, CriteriaQuery<?> criteriaQuery,
           CriteriaBuilder criteriaBuilder) {
-        return criteriaBuilder.like(root.get("type_id"), "%" + type + "%" );
+        return criteriaBuilder.equal(root.join("type", JoinType.LEFT).get("id"), type);
       }
     } ;
   }

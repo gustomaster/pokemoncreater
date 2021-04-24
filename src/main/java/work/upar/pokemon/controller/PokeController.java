@@ -1,7 +1,6 @@
 package work.upar.pokemon.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import work.upar.pokemon.entity.Pokemon;
-import work.upar.pokemon.entity.Type;
 import work.upar.pokemon.form.SearchForm;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.service.PokeService;
@@ -65,11 +62,9 @@ public class PokeController {
 
     @PostMapping("/search")
     String search2(@ModelAttribute("form") SearchForm form, Model model) {
-        System.out.println(form);
 
         List<Pokemon> pokemons = pokeService.search(form);
         model.addAttribute("pokemons", pokemons);
         return "search";
     }
-    
 }
