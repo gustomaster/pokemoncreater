@@ -13,6 +13,9 @@ import work.upar.pokemon.form.SearchForm;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.repository.TypeRepository;
 
+/**
+ * service.
+ */
 @RequiredArgsConstructor
 @Service
 public class PokeService {
@@ -32,6 +35,12 @@ public class PokeService {
         return pokeRepository.findAll();
     }
 
+    /**
+     * 条件に一致するポケモンを検索する.
+     *
+     * @param form 検索フォーム.
+     * @return 検索結果一覧.
+     */
     public List<Pokemon> search(SearchForm form) {
         String name = form.getName();
         Long type = form.getType();

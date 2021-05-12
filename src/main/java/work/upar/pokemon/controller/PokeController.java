@@ -15,6 +15,9 @@ import work.upar.pokemon.form.SearchForm;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.service.PokeService;
 
+/**
+ * Controller.
+ */
 @RequiredArgsConstructor
 @Controller
 public class PokeController {

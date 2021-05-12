@@ -2,6 +2,9 @@ package work.upar.pokemon.form;
 
 import lombok.Data;
 
+/**
+ * 検索する情報を保持するform
+ */
 @Data
 public class SearchForm {
   // ポケモンの名前

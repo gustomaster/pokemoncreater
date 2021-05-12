@@ -11,6 +11,9 @@ import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 第一タイプEntity.
+ */
 @Getter
 @Setter
 @Entity

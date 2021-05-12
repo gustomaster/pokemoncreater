@@ -7,16 +7,17 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 import work.upar.pokemon.entity.Pokemon;
 
-// JPAは動的なSQL生成に向いていないためJPASpecificationを利用する
+/**
+ * 引数に応じて動的なSQLを生成するJPASpecification.
+ */
 @Service
 public class PokeSpecifications {
 
   /**
-   * 受け取ったnameを元にnameを検索するSQLのwhere句を返却する
+   * 受け取ったnameを元にnameを検索するSQLのwhere句を返却する.
    *
-   * @param name  ポケモン名.
-   * @return nameがnull:         null.
-   * @return nameがnullではない:  nameを検索するためのwhere句
+   * @param name ポケモン名.
+   * @return nameがnullの場合はnull, null以外の場合はポケモン名検索のためのwhere句.
    */
   public Specification<Pokemon> nameContains(String name) {
 
@@ -29,6 +30,12 @@ public class PokeSpecifications {
     } ;
   }
 
+  /**
+   * 受け取ったtypeを元にtypeを検索するSQLのwhere句を返却する.
+   *
+   * @param type 第一タイプ.
+   * @return typeがnullの場合はnull, null以外の場合は第一タイプ検索のためのwhere句.
+   */
   public Specification<Pokemon> typeContains(Long type) {
 
     return Objects.isNull(type) ? null : new Specification<Pokemon>() {
@@ -40,6 +47,14 @@ public class PokeSpecifications {
     } ;
   }
 
+  /**
+   * 受け取ったtypeを元にtypeを検索するSQLのwhere句を返却する.
+   *
+   * @param bs 種族値の種類.
+   * @param bsv 種族値の値.
+   * @param bsj 検索条件が値「以下(0)」か「以上(1)」を判定するフラグ.
+   * @return bsvかbsjがnullの場合はnull, null以外の場合は種族値検索のためのwhere句.
+   */
   public Specification<Pokemon> baseStatusContains(String bs,Long bsv,Long bsj) {
     return Objects.isNull(bsj) | Objects.isNull(bsv) ? null : new Specification<Pokemon>() {
       @Override

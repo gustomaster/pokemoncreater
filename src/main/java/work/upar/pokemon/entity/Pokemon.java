@@ -9,6 +9,9 @@ import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * ポケモンEntity.
+ */
 @Getter
 @Setter
 @Entity
