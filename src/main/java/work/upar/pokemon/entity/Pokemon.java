@@ -32,4 +32,7 @@ public class Pokemon {
     @ManyToOne
     private Type type;
 
+    @ManyToOne
+    private Type2 type2;
+
 }
