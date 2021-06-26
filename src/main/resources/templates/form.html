@@ -19,7 +19,7 @@
 
             <label for="type">タイプ2</label>
             <select th:field="*{type2}">
-                <th:block th:each="type2 : ${@typeRepository.findAll()}">
+                <th:block th:each="type2 : ${@type2Repository.findAll()}">
                     <option th:value="${type2.id}" th:text="${type2.name}"></option>
                 </th:block>
             </select>

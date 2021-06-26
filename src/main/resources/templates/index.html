@@ -36,11 +36,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="pokemon : ${pokemons}" th:object="${pokemon}">
+                    <tr th:each="pokemons : ${pokemonFormList}" th:object="${pokemons}">
                         <td th:text="*{id}"></td>
                         <td th:text="*{name}"></td>
-                        <td th:text="*{type.name}"></td>
-                        <td th:text="*{type2.name}"></td>
+                        <td th:text="*{type}"></td>
+                        <td th:text="*{type2}"></td>
                         <td th:text="*{h}"></td>
                         <td th:text="*{a}"></td>
                         <td th:text="*{b}"></td>
