@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
@@ -15,17 +15,17 @@
         <br />
         <form th:action="@{/search}" th:object="${pokemon}" method="post">
 
-            <label for="name">名前</label>
+            <label th:for="name">名前</label>
             <input type="text" name="name">
 
-            <label for="type">タイプ</label>
+            <label th:for="type">タイプ</label>
             <select name="type">
                 <option value=""></option>
                 <option th:each="type :${@typeRepository.findAll()}" th:value="${type.id}" th:text="${type.name}"></option>
             </select>
             <br />
 
-            <label for="baseStatus">種族値</label>
+            <label th:for="baseStatus">種族値</label>
             <select name="baseStatus">
                 <option value="h">HP</option>
                 <option value="a">攻撃</option>
@@ -34,15 +34,15 @@
                 <option value="d">特防</option>
                 <option value="s">素早さ</option>
             </select>
-        が
-        <input type="number" name="baseStatusValue">
-<!-- UP or Down -->
+            が
+            <input type="number" name="baseStatusValue" />
+            <!-- UP or Down -->
             <select name="baseStatusJudge">
                 <option value="1">以上</option>
                 <option value="0">以下</option>
             </select>
             <br />
-            <input type="submit" text="検索するよ">
+            <input type="submit" text="検索するよ" />
         </form>
         <br />
         <br />
@@ -51,38 +51,39 @@
             <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
             <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
             <div class="col">
-            <table border="1" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>ポケモン</th>
-                        <th>タイプ</th>
-                        <th>HP</th>
-                        <th>攻撃</th>
-                        <th>防御</th>
-                        <th>特攻</th>
-                        <th>特防</th>
-                        <th>素早さ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="pokemon : ${pokemons}" th:object="${pokemon}">
-                        <td th:text="*{id}"></td>
-                        <td th:text="*{name}"></td>
-                        <td th:text="*{type.name}"></td>
-                        <td th:text="*{h}"></td>
-                        <td th:text="*{a}"></td>
-                        <td th:text="*{b}"></td>
-                        <td th:text="*{c}"></td>
-                        <td th:text="*{d}"></td>
-                        <td th:text="*{s}"></td>
-                    </tr>
-                </tbody>
-            </table>
+                <table border="1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ポケモン</th>
+                            <th>タイプ</th>
+                            <th>HP</th>
+                            <th>攻撃</th>
+                            <th>防御</th>
+                            <th>特攻</th>
+                            <th>特防</th>
+                            <th>素早さ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="pokemon : ${pokemons}" th:object="${pokemon}">
+                            <td th:text="*{id}"></td>
+                            <td th:text="*{name}"></td>
+                            <td th:text="*{type.name}"></td>
+                            <td th:text="*{h}"></td>
+                            <td th:text="*{a}"></td>
+                            <td th:text="*{b}"></td>
+                            <td th:text="*{c}"></td>
+                            <td th:text="*{d}"></td>
+                            <td th:text="*{s}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <a href="/">
+                TOPへ戻る
+            </a>
         </div>
-        <br />
-        <a href="/">
-            TOPへ戻る
-        </a> 
     </body>
 </html>

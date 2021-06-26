@@ -18,57 +18,58 @@
             <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
             <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
             <div class="col">
-            <table border="1" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>ポケモン</th>
-                        <th>タイプ</th>
-                        <th>タイプ2</th>
-                        <th>HP</th>
-                        <th>攻撃</th>
-                        <th>防御</th>
-                        <th>特攻</th>
-                        <th>特防</th>
-                        <th>素早さ</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="pokemons : ${pokemonFormList}" th:object="${pokemons}">
-                        <td th:text="*{id}"></td>
-                        <td th:text="*{name}"></td>
-                        <td th:text="*{type}"></td>
-                        <td th:text="*{type2}"></td>
-                        <td th:text="*{h}"></td>
-                        <td th:text="*{a}"></td>
-                        <td th:text="*{b}"></td>
-                        <td th:text="*{c}"></td>
-                        <td th:text="*{d}"></td>
-                        <td th:text="*{s}"></td>
-                        <td>
-                            <a th:href="@{/edit/{id}(id=*{id})}">
-                                <button class="btn btn-primary">edit</button>
-                            </a>
-                        </td>
+                <table border="1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ポケモン</th>
+                            <th>タイプ</th>
+                            <th>タイプ2</th>
+                            <th>HP</th>
+                            <th>攻撃</th>
+                            <th>防御</th>
+                            <th>特攻</th>
+                            <th>特防</th>
+                            <th>素早さ</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="pokemons : ${pokemonFormList}" th:object="${pokemons}">
+                            <td th:text="*{id}"></td>
+                            <td th:text="*{name}"></td>
+                            <td th:text="*{type}"></td>
+                            <td th:text="*{type2}"></td>
+                            <td th:text="*{h}"></td>
+                            <td th:text="*{a}"></td>
+                            <td th:text="*{b}"></td>
+                            <td th:text="*{c}"></td>
+                            <td th:text="*{d}"></td>
+                            <td th:text="*{s}"></td>
+                            <td>
+                                <a th:href="@{/edit/{id}(id=*{id})}">
+                                    <button class="btn btn-primary">edit</button>
+                                </a>
+                            </td>
 
-                        <td>
-                            <a th:href="@{/delete/{id}(id=*{id})}" >
-                                <button class="btn btn-danger">delete</button>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <td>
+                                <a th:href="@{/delete/{id}(id=*{id})}" >
+                                    <button class="btn btn-danger">delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <a th:href="@{/new}">
+                ポケモンを創造する
+            </a>
+            <br />
+            <a th:href="@{/search}">
+                ポケモンを検索する
+            </a>
         </div>
-        <br />
-        <a th:href="@{/new}">
-            ポケモンを創造する
-        </a> 
-        <br />
-        <a th:href="@{/search}">
-            ポケモンを検索する
-        </a> 
     </body>
 </html>

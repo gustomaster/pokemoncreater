@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import work.upar.pokemon.entity.Pokemon;
-import work.upar.pokemon.service.PokeSpecifications;
 import work.upar.pokemon.form.SearchForm;
 import work.upar.pokemon.repository.PokeRepository;
 import work.upar.pokemon.repository.TypeRepository;

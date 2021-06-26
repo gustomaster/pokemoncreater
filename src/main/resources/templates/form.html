@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
     </head>  
@@ -7,17 +7,17 @@
         <form th:action="@{/update}" th:object="${pokemon}" method="post">
             <input type="hidden" th:field="*{id}">
 
-            <label for="name">名前</label>
+            <label th:for="name">名前</label>
             <input type="text" th:field="*{name}">
 
-            <label for="type">タイプ</label>
+            <label th:for="type">タイプ</label>
             <select th:field="*{type}">
                 <th:block th:each="type : ${@typeRepository.findAll()}">
                     <option th:value="${type.id}" th:text="${type.name}"></option>
                 </th:block>
             </select>
 
-            <label for="type">タイプ2</label>
+            <label th:for="type">タイプ2</label>
             <select th:field="*{type2}">
                 <th:block th:each="type2 : ${@type2Repository.findAll()}">
                     <option th:value="${type2.id}" th:text="${type2.name}"></option>
@@ -26,22 +26,22 @@
 
             <br />
             
-            <label for="name">HP</label>
+            <label th:for="name">HP</label>
             <input type="number" th:field="*{H}">
 
-            <label for="name">攻撃</label>
+            <label th:for="name">攻撃</label>
             <input type="number" th:field="*{A}">
             
-            <label for="name">防御</label>
+            <label th:for="name">防御</label>
             <input type="number" th:field="*{B}">
             
-            <label for="name">特攻</label>
+            <label th:for="name">特攻</label>
             <input type="number" th:field="*{C}">
             
-            <label for="name">特防</label>
+            <label th:for="name">特防</label>
             <input type="number" th:field="*{D}">
 
-            <label for="name">素早さ</label>
+            <label th:for="name">素早さ</label>
             <input type="number" th:field="*{S}">
 
             <br />
