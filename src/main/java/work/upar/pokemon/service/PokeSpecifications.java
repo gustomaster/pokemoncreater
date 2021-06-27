@@ -33,8 +33,8 @@ public class PokeSpecifications {
   /**
    * 受け取ったtypeを元にtypeを検索するSQLのwhere句を返却する.
    *
-   * @param type 第一タイプ.
-   * @return typeがnullの場合はnull, null以外の場合は第一タイプ検索のためのwhere句.
+   * @param type 検索条件から受け取ったタイプ.
+   * @return typeがnullの場合はnull, null以外の場合はタイプ検索のためのwhere句.
    */
   public Specification<Pokemon> typeContains(Long type) {
 
@@ -42,7 +42,10 @@ public class PokeSpecifications {
       @Override
       public Predicate toPredicate(Root<Pokemon> root, CriteriaQuery<?> criteriaQuery,
           CriteriaBuilder criteriaBuilder) {
-        return criteriaBuilder.equal(root.join("type", JoinType.LEFT).get("id"), type);
+        // or条件で第1/第2タイプどちらも検索できるように.
+        // joinでテーブル結合し、タイプidからポケモンを検索する.
+        return criteriaBuilder.or(criteriaBuilder.equal(root.join("type", JoinType.LEFT).get("id"), type),
+            criteriaBuilder.equal(root.join("type2", JoinType.LEFT).get("id"),type));
       }
     } ;
   }
