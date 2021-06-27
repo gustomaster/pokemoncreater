@@ -2,6 +2,9 @@ package work.upar.pokemon.form;
 
 import lombok.Data;
 
+/**
+ * 検索条件を格納するform.
+ */
 @Data
 public class PokemonForm {
   private Long id;
