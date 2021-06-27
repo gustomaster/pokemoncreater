@@ -3,7 +3,7 @@ package work.upar.pokemon.form;
 import lombok.Data;
 
 /**
- * 検索条件を格納するform.
+ * ポケモンの編集情報を格納するform.
  */
 @Data
 public class PokemonForm {
