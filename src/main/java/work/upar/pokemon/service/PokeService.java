@@ -10,8 +10,6 @@ import lombok.RequiredArgsConstructor;
 import work.upar.pokemon.entity.Pokemon;
 import work.upar.pokemon.form.SearchForm;
 import work.upar.pokemon.repository.PokeRepository;
-import work.upar.pokemon.repository.TypeRepository;
-import work.upar.pokemon.repository.Type2Repository;
 
 /**
  * service.
@@ -27,12 +25,6 @@ public class PokeService {
     @Autowired
     @NonNull
     private final PokeSpecifications pokeSpecifications;
-
-    @NonNull
-    private final TypeRepository typeRepository;
-
-
-    private final Type2Repository type2Repository;
     
     public List<Pokemon> findAll(){
         return pokeRepository.findAll();
