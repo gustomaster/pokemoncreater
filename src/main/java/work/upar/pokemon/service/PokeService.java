@@ -46,6 +46,7 @@ public class PokeService {
             .where(pokeSpecifications.nameContains(name))
             .and(pokeSpecifications.baseStatusContains(bs,bsv,bsj))
             .and(pokeSpecifications.typeContains(type))
+            .and(pokeSpecifications.isDeletedContains())
         );
     }
 

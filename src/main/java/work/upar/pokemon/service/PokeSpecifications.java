@@ -73,5 +73,18 @@ public class PokeSpecifications {
     } ;
   }
 
-
+  /**
+   * 論理削除フラグがfalseのものを表示するためのwhere句を返却する.
+   *
+   * @return bsvかbsjがnullの場合はnull, null以外の場合は種族値検索のためのwhere句.
+   */
+  public Specification<Pokemon> isDeletedContains() {
+    return new Specification<Pokemon>() {
+      @Override
+      public Predicate toPredicate(Root<Pokemon> root, CriteriaQuery<?> criteriaQuery,
+          CriteriaBuilder criteriaBuilder) {
+        return criteriaBuilder.equal(root.get("isDeleted"), false);
+      }
+    } ;
+  }
 }

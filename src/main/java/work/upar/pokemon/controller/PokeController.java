@@ -37,18 +37,20 @@ public class PokeController {
 
         List <PokemonForm> pokemonFormList = new ArrayList<>();
         for (Pokemon pokemon : pokemonList) {
-            PokemonForm pokemonForm  = new PokemonForm();
-            pokemonForm.setId(pokemon.getId());
-            pokemonForm.setName(pokemon.getName());
-            pokemonForm.setH(pokemon.getH());
-            pokemonForm.setA(pokemon.getA());
-            pokemonForm.setB(pokemon.getB());
-            pokemonForm.setC(pokemon.getC());
-            pokemonForm.setD(pokemon.getD());
-            pokemonForm.setS(pokemon.getS());
-            pokemonForm.setType(pokemon.getType().getName());
-            pokemonForm.setType2(pokemon.getType2().getName());
-            pokemonFormList.add(pokemonForm);
+            if (!pokemon.isDeleted()) {
+                PokemonForm pokemonForm = new PokemonForm();
+                pokemonForm.setId(pokemon.getId());
+                pokemonForm.setName(pokemon.getName());
+                pokemonForm.setH(pokemon.getH());
+                pokemonForm.setA(pokemon.getA());
+                pokemonForm.setB(pokemon.getB());
+                pokemonForm.setC(pokemon.getC());
+                pokemonForm.setD(pokemon.getD());
+                pokemonForm.setS(pokemon.getS());
+                pokemonForm.setType(pokemon.getType().getName());
+                pokemonForm.setType2(pokemon.getType2().getName());
+                pokemonFormList.add(pokemonForm);
+            }
         }
 
         model.addAttribute("pokemonFormList", pokemonFormList);
@@ -74,7 +76,10 @@ public class PokeController {
 
     @GetMapping("/delete/{id}")
     public String deletePokemon(@PathVariable Long id) {
-        repository.deleteById(id);
+        Pokemon pokemon = repository.getOne(id);
+        pokemon.setDeleted(true);
+        repository.save(pokemon);
+
         return "redirect:/";
     }
 
@@ -87,7 +92,7 @@ public class PokeController {
 
         List <PokemonForm> pokemonFormList = new ArrayList<>();
         for (Pokemon pokemon : pokemonList) {
-            PokemonForm pokemonForm  = new PokemonForm();
+            PokemonForm pokemonForm = new PokemonForm();
             pokemonForm.setId(pokemon.getId());
             pokemonForm.setName(pokemon.getName());
             pokemonForm.setH(pokemon.getH());

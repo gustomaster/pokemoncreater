@@ -24,7 +24,10 @@ public class Pokemon {
     private int c;
     private int d;
     private int s;
-    
+
+    // 論理削除フラグ
+    private boolean isDeleted;
+
     @ManyToOne
     private Type type;
 
